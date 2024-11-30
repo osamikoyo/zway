@@ -2,10 +2,12 @@ package app
 
 import (
 	"context"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+
 	"zway/internal/handler"
 )
 
@@ -23,9 +25,11 @@ func App(ctx context.Context) error {
 
 	go func() {
 		<-ctx.Done()
-		slog.Info("server shutdown!")
+		slog.Info("server shutdown!Goodbye :3")
 		s.Shutdown(ctx)
 	}()
+
+	slog.Info("Server starting!:3")
 
 	if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		return err
